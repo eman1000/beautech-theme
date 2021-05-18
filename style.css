@@ -1,0 +1,19 @@
+/*
+Theme Name: Beautech
+Theme URI: https://understrap.com
+Author: Emmancipate Musemwa
+Author URI: https://www.emancode.com/
+Version: 1.0.0
+Requires PHP: 5.2
+Text Domain: beautech
+
+*/
+
+/*
+This file is just used to identify the theme in WordPress.
+The compiled CSS output can be found in /css/theme.css
+The SASS sources for it can be found in /sass/
+The dependencies can be found in /src/ after running "gulp copy-assets" terminal command
+
+...and now go out and play!
+*/
