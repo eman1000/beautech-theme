@@ -35,31 +35,55 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
-		<div class="col2-set" id="customer_details">
-			<div class="col-1">
-				<?php do_action( 'woocommerce_checkout_billing' ); ?>
+			<div class="cd-row" id="customer_details">
+				<div class="col-cols">
+					<div class="col-white">
+						<?php do_action( 'woocommerce_checkout_billing' ); ?>
+
+						<?php do_action( 'woocommerce_checkout_shipping' ); ?>
+					</div>
+				</div>
+
+				<div class="col-cols">
+				
+					<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
+		
+					<!-- <h3 id="order_review_heading checkout-titles"><?php esc_html_e( 'Payment', 'woocommerce' ); ?></h3> -->
+		
+					<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+				
+					<div id="order_review" class="woocommerce-checkout-review-order">
+						<?php do_action( 'woocommerce_checkout_order_review' ); ?>
+					</div>
+
+					<!-- TAKEN FROM REVIEW ORDER -->
+						<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
+
+							<div class="order-total-full-width">
+								<div class="heading"><?php esc_html_e( 'ORDER TOTAL', 'woocommerce' ); ?></div>
+								<div class="amount"><?php wc_cart_totals_order_total_html(); ?></div>
+							</div>
+
+							<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
+					<!-- TAKEN FROM REVIEW ORDER -->
+					
+					<div class="delivery-info">
+						<span>We typically delivers within <b>7 to 14 days</b>. We will be in touch if there are any changes to your delivery.</span><span> For urgent orders, please contact our office before making payment.</span>
+					</div>
+
+					<div class="complete-order">
+						<button class="btn btn-jumbo">COMPLETE ORDER</button>
+					</div>
+
+
+						<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
+				</div>
 			</div>
 
-			<div class="col-2">
-				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
-			</div>
-		</div>
+				<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
-		<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
+			<?php endif; ?>
 
-	<?php endif; ?>
-	
-	<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
-	
-	<h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
-	
-	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
-
-	<div id="order_review" class="woocommerce-checkout-review-order">
-		<?php do_action( 'woocommerce_checkout_order_review' ); ?>
-	</div>
-
-	<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
 </form>
 

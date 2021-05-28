@@ -55,6 +55,25 @@ if( function_exists('acf_add_options_page') ) {
 
 add_action( 'woocommerce_before_single_product', 'beautech_change_single_product_layout' );
 
+//Remove Price Range
+add_filter( 'woocommerce_variable_sale_price_html', 'detect_variation_price_format', 10, 2 );
+add_filter( 'woocommerce_variable_price_html', 'detect_variation_price_format', 10, 2 );
+
+function detect_variation_price_format( $price, $product ) {
+	// Main Price
+	$prices = array( $product->get_variation_price( 'min', true ), $product->get_variation_price( 'max', true ) );
+	if ($prices[0] !== $prices[1]) {
+	$price = $prices[0] !== $prices[1] ? sprintf( __( '', 'woocommerce' ), wc_price( $prices[0] ) ) : wc_price( $prices[0] );
+	}
+	// Sale Price
+	$prices = array( $product->get_variation_regular_price( 'min', true ), $product->get_variation_regular_price( 'max', true ) );
+	sort( $prices );
+	$saleprice = $prices[0] !== $prices[1] ? sprintf( __( '', 'woocommerce' ), wc_price( $prices[0] ) ) : wc_price( $prices[0] );
+	if ( $price !== $saleprice ) {
+	$price = '<del>' . $saleprice . '</del> <ins>' . $price . '</ins>';
+	}
+	return $price;
+}
 
 function beautech_change_single_product_layout() {
     // Disable the hooks so that their order can be changed.
@@ -188,4 +207,33 @@ if (class_exists('acf') && class_exists('WooCommerce')) {
  
 		echo $custom_tabs_repeater[$tab_id]['tab_contents'];
 	}
+}
+
+
+
+add_filter("woocommerce_checkout_fields", "custom_override_checkout_fields", 1);
+function custom_override_checkout_fields($fields) {
+
+	$fields['billing']['billing_company']['priority'] = 1;
+    $fields['billing']['billing_first_name']['priority'] = 2;
+    $fields['billing']['billing_last_name']['priority'] = 3;
+    $fields['billing']['billing_phone']['priority'] = 4;
+
+		
+    $fields['billing']['billing_country']['priority'] = 5;
+    $fields['billing']['billing_state']['priority'] = 6;
+    $fields['billing']['billing_address_1']['priority'] = 7;
+    $fields['billing']['billing_address_2']['priority'] = 8;
+    $fields['billing']['billing_city']['priority'] = 9;
+    $fields['billing']['billing_postcode']['priority'] = 10;
+    $fields['billing']['billing_email']['priority'] = 11;
+    return $fields;
+}
+
+add_filter( 'woocommerce_default_address_fields', 'custom_override_default_locale_fields' );
+function custom_override_default_locale_fields( $fields ) {
+    $fields['state']['priority'] = 5;
+    $fields['address_1']['priority'] = 6;
+    $fields['address_2']['priority'] = 7;
+    return $fields;
 }
