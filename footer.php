@@ -141,7 +141,12 @@ function closelightbox() {
 	jQuery('#pa_colour').attr("disabled", true); 
 
 </script>
-
+<script>
+  jQuery(".btn-special-cart").click(function() {
+    jQuery('.woocommerce-cart').find('button[name="update_cart"]').prop('disabled', false);
+  })
+    
+</script>
 </body>
 
 </html>

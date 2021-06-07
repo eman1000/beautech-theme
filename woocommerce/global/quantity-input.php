@@ -35,7 +35,7 @@ if ( $max_value && $min_value === $max_value ) {
 
 		<div class="input-group inline-group">
 			<div class="input-group-prepend">
-				<button class="btn btn-outline-secondary btn-minus">
+				<button class="btn btn-outline-secondary btn-minus btn-special-cart">
 					<i class="fa fa-minus"></i>
 				</button>
 			</div>
@@ -56,7 +56,7 @@ if ( $max_value && $min_value === $max_value ) {
 				inputmode="<?php echo esc_attr( $inputmode ); ?>" />
 			<?php do_action( 'woocommerce_after_quantity_input_field' ); ?>
 			<div class="input-group-append">
-				<button class="btn btn-outline-secondary btn-plus">
+				<button class="btn btn-outline-secondary btn-plus btn-special-cart">
 					<i class="fa fa-plus"></i>
 				</button>
 			</div>

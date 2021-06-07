@@ -46,6 +46,7 @@ $hero_button_text_2 = get_field('button_text_2', 'product_cat_' . $product_categ
 
 $hero_button_link_1 = get_field('button_link_1', 'product_cat_' . $product_category->term_id);
 $hero_button_link_2 = get_field('button_link_2', 'product_cat_' . $product_category->term_id);
+$jumbo_text = get_field('jumbo_text', 'product_cat_' . $product_category->term_id);
 
 $style = get_field('style', 'product_cat_' . $product_category->term_id);
 
@@ -63,6 +64,11 @@ $current_id = $post->ID;
     <?php if($title):?>
     <h1><?php echo $title;?></h1>
     <?php endif;?>
+
+    <?php if($jumbo_text):?>
+    <h1 class="jumbo-text"><?php echo $jumbo_text;?></h1>
+    <?php endif;?>
+
     <div class="tags-holder">
       <?php foreach($hero_tags as $value){?>
         <div>
@@ -134,7 +140,7 @@ $current_id = $post->ID;
   <div class="container border-bottom">
     <div class="row">
       <div class="col-md-6">
-      <?php if(is_shop()){ 
+      <!-- <?php if(is_shop()){ 
           echo '<h1 class="entry-title">Shop</h1>'; } 
         else if (is_product_category()) {
           single_term_title( '<h1 class="entry-title">', '</h1>' );
@@ -146,7 +152,9 @@ $current_id = $post->ID;
               echo '<h1 class="entry-title"> ' . $terms[0]->name .'</h1>';
             }
           }
-        } ?>
+        } ?> -->
+
+        <h1 class="entry-title  break-text">Available Products</h1>
       </div>
       <div class="col-md-6">
         <ul class="category-products">
@@ -225,17 +233,7 @@ $current_id = $post->ID;
 </div>
 <!--/End usp belt -->
 
-<script>
 
-
-  // $('.autoplay').slick({
-  //   slidesToShow: 3,
-  //   slidesToScroll: 1,
-  //   autoplay: true,
-  //   autoplaySpeed: 2000,
-  // });
-    
-</script>
 
 <script>
 	var elmnt = document.getElementById("usp-belt");

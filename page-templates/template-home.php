@@ -51,6 +51,12 @@ $service_4_icon = get_field('service_4_icon');
 $gallery_title = get_field('gallery_title');
 $images = get_field('gallery');
 
+
+$modal_header_image = get_field('modal_header_image')['sizes']['large'];
+$modal_title = get_field('modal_title');
+$modal_main_text = get_field('modal_main_text');
+$modal_button_link = get_field('modal_button_link');
+
 $taxonomy     = 'product_cat';
 //$orderby      = 'date';  
 $show_count   = 0;      // 1 for yes, 0 for no
@@ -295,6 +301,40 @@ $bootstrapColWidth = 12 / $numOfCols;
 <!--/End Our Work -->
 
 
+
+
+<!-- Modal -->
+<div class="modal  fade" style="display: block;" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-image: url('<?php echo $modal_header_image; ?>');">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <?php if($modal_main_text):?>
+          <h2>
+            <?php echo $modal_title;?>
+        </h2>
+        <?php endif;?>
+
+        <?php if($modal_main_text):?>
+          <div>
+            <?php echo $modal_main_text;?>
+          </div>
+        <?php endif;?>
+        <div class="modal-action">
+          <button type="button" class="btn btn-primary">Contact Us Now!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--End Modal -->
 <script>
 
 
@@ -304,7 +344,18 @@ $bootstrapColWidth = 12 / $numOfCols;
   //   autoplay: true,
   //   autoplaySpeed: 2000,
   // });
+
+  jQuery("#homeModal .close").click(function() {
     
+    jQuery("#homeModal").css("display", "none")
+    jQuery("#homeModal").css("opacity", "0")
+  })
+  setTimeout(function() {
+    
+    jQuery("#homeModal").css("display", "block")
+    jQuery("#homeModal").css("opacity", "1")
+    
+  }, 3000);    
 </script>
 
 <?php

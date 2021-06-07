@@ -126,6 +126,11 @@ select, input{
     #navbarNavDropdown{
       background-color: #fff;
       padding: 15px;
+      @media(max-width: $lg){
+        z-index: 99;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+        transition: 0.3s;
+      }
     }
     height: 120px;
     .dropdown-menu{
@@ -271,7 +276,18 @@ select, input{
 
     }
   }
+
+  .jumbo-text{
+    margin-top: 22px;
+    margin-bottom: 22px;
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    max-width: 500px;
+  }
 }
+
 
 .page-pannel{
   padding-top: 70px;
@@ -724,6 +740,10 @@ select, input{
     font-size: 28px;
     text-transform: uppercase;
     color: $bronze-yellow;
+    
+  }
+  .break-text{
+    max-width: 160px;
   }
   .category-products{
   
@@ -1302,4 +1322,348 @@ select {
 
 .woocommerce .woocommerce-customer-details .woocommerce-customer-details--email, .woocommerce .woocommerce-customer-details .woocommerce-customer-details--phone{
   margin-top: 15px;
+}
+
+.menu-cart{
+  background-image: url('../img/icon/cart-blue.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  color: transparent;
+  width: 37px;
+  height: 37px;
+  @media(min-width: $lg){
+    justify-self: center;
+    align-self: center;
+  }
+  .nav-link{
+    color: rgba(0,0,0,0) !important;
+  }
+}
+
+
+.modal{
+  // display: block;
+  // opacity: 1 !important;
+}
+.modal-dialog{
+  max-width: 800px;
+  .modal-content{
+    margin-top: 10%;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    &:hover{
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
+    }
+  
+  }
+}
+
+
+
+.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button{
+  height: 40px;
+  background: $secondary;
+  border-radius: 4px; 
+  color: #fff !important;
+  justify-content: center;
+  align-items: center;
+  &:hover{
+    opacity: 0.5;
+    background: $secondary;
+    color: #fff;
+  }
+}
+
+.reset_variations{
+  display: none;
+}
+
+#homeModal{
+  
+  .modal-header{
+    height: 300px;
+    background: $ford-grey;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    .close{
+      margin-top: 5px;
+      margin-right: 5px;
+      opacity: 1;
+      span{
+        display: block;
+        width: 16px;
+        height: 16px;
+        background: url('../img/icon/close.svg');
+      }
+    }
+  }
+  .modal-body{
+    padding: 20px;
+    @media(min-width:$md){
+      padding: 40px;
+    }
+    h2{
+      font-weight: bold;
+      font-size: 28px;
+      text-align: center;
+      letter-spacing: 1.5px;
+      color: $secondary;
+      margin-bottom: 30px;
+    }
+    p{
+
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 26px;
+
+      text-align: center;
+      letter-spacing: 0.7px;
+
+      color: #000000;
+    }
+
+    .modal-action{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+    }
+  }
+
+}
+
+.contact-us-banner{
+  h1{
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 80px;
+    letter-spacing: 1.5px;
+    color: #0582C2; 
+    text-shadow: 2px 2px #fff;
+
+  }
+}
+
+.contact-header{
+  .contact-header-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p{
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      margin-top: 30px;
+
+      color: #000000;
+    }
+  }
+}
+
+.contact-panel{
+  padding-top: 0 !important;
+  .grad-wrapper{
+    .grad-panel{
+      padding: 63px;
+      height: 550px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 8px;
+      h2{
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 42px;
+        letter-spacing: 0.5px;
+        color: #FFFFFF;
+        text-transform: none;
+        max-width: 288px;
+        text-align: left;
+      }
+      p{
+        font-weight: 500;
+        font-size: 13px;
+        color: #FFFFFF;
+        max-width: 288px;
+        text-align: left;
+      }
+    }
+    .pan-blue{
+      background: linear-gradient(52.92deg, #0582C2 15.91%, rgba(5, 130, 194, 0.67808) 79.19%, rgba(5, 130, 194, 0) 119.56%);
+      max-height: 550px;
+    }
+    .pan-green{
+      max-height: 271px;
+      @media(max-width: $md){
+        max-height: 100%;
+      }
+      background: linear-gradient(72.32deg, #256727 58.13%, rgba(34, 114, 44, 0) 193.23%);    }
+    }
+    .pan-gold{
+      max-height: 271px;
+      @media(max-width: $md){
+        max-height: 100%;
+      }
+      background: linear-gradient(71.16deg, #9F9329 56.37%, #E9E197 98.95%);
+    }
+    .arrow-wrapper{
+      img{
+        width: 146px;
+        margin-top: 26px;
+        margin-bottom: 26px;
+      }
+    }
+}
+
+.codedropz-upload-handler{
+  border: 0.3px solid rgba(94, 89, 89, 0.5);
+
+  
+ background: #FAFAFA;
+}
+.contact-form-pannel{
+  padding-top: 0;
+  h2{
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 42px;
+    color:$secondary;
+    text-transform: none;
+  }
+  .wpcf7-form-control{
+    margin-top: 20px;
+    background-color: #FAFAFA;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    line-height: 18px;
+    color: #495057;
+  }
+  .formats, .size{
+    font-size: 8px;
+    line-height: 16px;
+    text-align: right;
+
+    color: #495057;
+  }
+  .size{
+    color: #D84E4B;
+  }
+
+  .submitBtn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .wpcf7-response-output{
+      display: block !important;
+      margin: 0;
+    }
+  }
+  .contact-card{
+    padding: 37px;border-radius: 6px;
+  }
+  label{
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    color: #495057;
+  }
+  textarea{
+    margin-bottom: 26px;
+  }
+  input, textarea, select{
+    background-color: #FAFAFA !important;
+  }
+
+}
+
+#contactSubmit{
+  width: 148px;
+  border: none;
+  background-color: $secondary !important;
+  color: #fff;
+}
+
+#drop_file_zone {
+  background-color: #FAFAFA;
+  width: 100%;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#drag_upload_file {
+width:50%;
+margin:0 auto;
+}
+#drag_upload_file p {
+text-align: center;
+}
+#drag_upload_file #selectfile {
+display: none;
+}
+
+.codedropz-upload-wrapper{
+  h3{
+    font-size: 11px;
+    line-height: 16px;
+    text-align: center;
+    color: #495057;
+    display: none;
+  }
+  .codedropz-upload-container{
+    span{
+
+      font-size: 11px;
+      line-height: 16px;
+      text-align: center;
+      color: #495057;
+      &:before{
+        content: "Drop files here ";
+        font-size: 11px;
+        line-height: 16px;
+        text-align: center;
+        color: #495057;
+      }
+    }
+  }
+  .codedropz-btn-wrap{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 10px;
+    a{
+      background: #6BA1BD;
+      color: #fff;
+      border-radius: 3px;
+      width: 130px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      align-self: center;
+    }
+  }
+}
+
+.wpcf7-response-output{
+    border: none !important;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 16px;
+    text-align: center;
+    color: #495057;
+    display: none;
 }
