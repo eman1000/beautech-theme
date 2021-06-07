@@ -13,11 +13,11 @@ global $product;
 ?>
 <div class="woocommerce-variation-add-to-cart variations_button row">
 
-	<!-- <div class="col-md-3 price-holder">
+	<div class="col-md-3 price-holder">
 		<label>Price per unit:</label>
 		<p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?>"><?php echo $product->get_price_html(); ?></p>
 
-	</div> -->
+	</div>
 	<div class="col-md-7">
 		<div class="quantity-cart">
 			<div class="quantity-holder">

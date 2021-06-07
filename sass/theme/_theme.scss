@@ -659,6 +659,34 @@ select, input{
   }
 }
 
+
+.banner-blue{
+  color:$secondary;
+  .tags-holder{
+    color: $secondary;
+  }
+  h1,.jumbo-text{
+    color: $secondary;
+  }
+}
+
+#tab-description{
+  h4{
+    color: #000000;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 22px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+  span{
+    text-align: center;
+  }
+  .col-md-3{
+    text-align: center;
+  }
+}
+
 .usp-belt{
   height: 77px;
   @media (max-width:$md){ 
@@ -841,7 +869,9 @@ label {
 .woocommerce div.product form.cart .variations select{
   margin-right: 0;
 }
-
+.woocommerce-variation-description{
+  display: none;
+}
 
 select {
   background: #FFFFFF;
@@ -1657,13 +1687,13 @@ display: none;
 }
 
 .wpcf7-response-output{
-    border: none !important;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 11px;
-    line-height: 16px;
-    text-align: center;
-    color: #495057;
-    display: none;
+  border: none !important;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 16px;
+  text-align: center;
+  color: #495057;
+  display: none;
 }

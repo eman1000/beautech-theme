@@ -53,27 +53,31 @@ if( function_exists('acf_add_options_page') ) {
 	));	
 }
 
-add_action( 'woocommerce_before_single_product', 'beautech_change_single_product_layout' );
+add_action('woocommerce_before_add_to_cart_form', 'selected_variation_price_replace_variable_price_range');
+function selected_variation_price_replace_variable_price_range(){
+    global $product;
 
-//Remove Price Range
-add_filter( 'woocommerce_variable_sale_price_html', 'detect_variation_price_format', 10, 2 );
-add_filter( 'woocommerce_variable_price_html', 'detect_variation_price_format', 10, 2 );
+    if( $product->is_type('variable') ):
+    ?><style> .woocommerce-variation-price {display:none;} </style>
+    <script>
+    jQuery(function($) {
+        var p = 'p.price'
+            q = $(p).html();
 
-function detect_variation_price_format( $price, $product ) {
-	// Main Price
-	$prices = array( $product->get_variation_price( 'min', true ), $product->get_variation_price( 'max', true ) );
-	if ($prices[0] !== $prices[1]) {
-	$price = $prices[0] !== $prices[1] ? sprintf( __( '', 'woocommerce' ), wc_price( $prices[0] ) ) : wc_price( $prices[0] );
-	}
-	// Sale Price
-	$prices = array( $product->get_variation_regular_price( 'min', true ), $product->get_variation_regular_price( 'max', true ) );
-	sort( $prices );
-	$saleprice = $prices[0] !== $prices[1] ? sprintf( __( '', 'woocommerce' ), wc_price( $prices[0] ) ) : wc_price( $prices[0] );
-	if ( $price !== $saleprice ) {
-	$price = '<del>' . $saleprice . '</del> <ins>' . $price . '</ins>';
-	}
-	return $price;
+        $('form.cart').on('show_variation', function( event, data ) {
+            if ( data.price_html ) {
+                $(p).html(data.price_html);
+            }
+        }).on('hide_variation', function( event ) {
+            $(p).html(q);
+        });
+    });
+    </script>
+    <?php
+    endif;
 }
+
+add_action( 'woocommerce_before_single_product', 'beautech_change_single_product_layout' );
 
 function beautech_change_single_product_layout() {
     // Disable the hooks so that their order can be changed.
