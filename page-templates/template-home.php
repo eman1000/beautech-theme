@@ -24,9 +24,19 @@ $hero_extra_text = get_field('extra_text');
 
 $hero_button_text_1 = get_field('button_text_1');
 $hero_button_text_2 = get_field('button_text_2');
+$hero_button_text_3 = get_field('button_text_3');
 
 $hero_button_link_1 = get_field('button_link_1');
 $hero_button_link_2 = get_field('button_link_2');
+$hero_button_link_3 = get_field('button_link_3');
+
+$home_facebook_icon = get_field('home_facebook_icon');
+$home_instagram_icon = get_field('home_instagram_icon');
+
+$home_facebook_link = get_field('facebook_link');
+$home_instagram_link = get_field('instagram_link');
+
+$social_text = get_field('social_text');
 
 $hero_background_image = get_field('background_image');
 $hero_background_picture = $hero_background_image['sizes']['large'];
@@ -37,6 +47,8 @@ $home_about_text = get_field('about_text');
 
 $home_about_title = get_field('about_title');
 $home_about_text = get_field('about_text');
+
+
 
 $home_services_title = get_field('home_services_title');
 $service_1 = get_field('service_1');
@@ -52,6 +64,7 @@ $gallery_title = get_field('gallery_title');
 $images = get_field('gallery');
 
 
+$modal_active = get_field('active');
 $modal_header_image = get_field('modal_header_image')['sizes']['large'];
 $modal_title = get_field('modal_title');
 $modal_main_text = get_field('modal_main_text');
@@ -115,6 +128,32 @@ $bootstrapColWidth = 12 / $numOfCols;
       <?php if($hero_button_text_2):?>
         <a  href="<?php echo $hero_button_link_2; ?>" class="btn btn-primary"><?php echo $hero_button_text_2; ?></a>
       <?php endif;?>
+
+      <?php if($hero_button_text_3):?>
+        <a  target="_blank" href="<?php echo $hero_button_link_3; ?>" class="btn btn-link">
+          <span><?php echo $hero_button_text_3; ?></span>
+          <span>
+            <img class="img-icon" src="<?php echo get_template_directory_uri(); ?>/img/icon/arrow-right-blue.svg" alt="arrow" />
+          </span>
+        </a>
+      <?php endif;?> 
+    </div>
+    <div class="social-holder" data-aos="fade-up">
+      <?php if($social_text):?>
+        <div class="social-text"><?php echo $social_text;?></div >
+      <?php endif;?>
+
+      <?php if($home_facebook_icon && $home_facebook_link): ?>
+        <a target="_blank" href="<?php echo $home_facebook_link ?>" class="social-icon">
+          <img src="<?php echo $home_facebook_icon['url'];?>" />
+        </a>
+      <?php endif;?>
+
+      <?php if($home_instagram_icon && $home_instagram_link): ?>
+        <a target="_blank" href="<?php echo $home_instagram_link ?>" class="social-icon">
+          <img src="<?php echo $home_instagram_icon['url'];?>" />
+        </a>
+      <?php endif;?>
     </div>
   </div>
 </div>
@@ -174,9 +213,9 @@ $bootstrapColWidth = 12 / $numOfCols;
             <p class="card-text"><?php echo $cat->description;?></p>
   
           </div>
-
+          
           <div class="card-footer bg-transparent border-transparent">
-            <a href="<?php echo get_term_link($cat->slug, 'product_cat');?>" class="btn btn-iconed">
+            <a href="<?php echo get_field('learn_more_link', 'product_cat_' . $cat->term_id);?>" class="btn btn-iconed">
               <span  class="btn-text">Learn More</span>
               <img class="img-icon" src="<?php echo get_template_directory_uri(); ?>/img/icon/arrow-right.svg" alt="arrow" />
             </a>
@@ -304,34 +343,39 @@ $bootstrapColWidth = 12 / $numOfCols;
 
 
 <!-- Modal -->
-<div class="modal  fade" style="display: block;" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header" style="background-image: url('<?php echo $modal_header_image; ?>');">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"></span>
-        </button>
-      </div>
-      <div class="modal-body">
 
-        <?php if($modal_main_text):?>
-          <h2>
-            <?php echo $modal_title;?>
-        </h2>
-        <?php endif;?>
 
-        <?php if($modal_main_text):?>
-          <div>
-            <?php echo $modal_main_text;?>
+<?php if($modal_active): ?>
+  <div class="modal  fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background-image: url('<?php echo $modal_header_image; ?>');">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <?php if($modal_main_text):?>
+            <h2>
+              <?php echo $modal_title;?>
+          </h2>
+          <?php endif;?>
+
+          <?php if($modal_main_text):?>
+            <div>
+              <?php echo $modal_main_text;?>
+
+            </div>
+          <?php endif;?>
+          <div class="modal-action">
+            <a href="<?php echo $modal_button_link;?>" class="btn btn-primary">Contact Us Now!</a>
           </div>
-        <?php endif;?>
-        <div class="modal-action">
-          <button type="button" class="btn btn-primary">Contact Us Now!</button>
         </div>
       </div>
     </div>
   </div>
-</div>
+<?php endif;?>
 
 
 <!--End Modal -->
@@ -355,7 +399,7 @@ $bootstrapColWidth = 12 / $numOfCols;
     jQuery("#homeModal").css("display", "block")
     jQuery("#homeModal").css("opacity", "1")
     
-  }, 3000);    
+  }, 1000);    
 </script>
 
 <?php

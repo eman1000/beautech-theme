@@ -13,7 +13,7 @@ global $product;
 ?>
 <div class="woocommerce-variation-add-to-cart variations_button row">
 
-	<div class="col-md-3 price-holder">
+	<div class="col-md-5 price-holder">
 		<label>Price per unit:</label>
 		<p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?>"><?php echo $product->get_price_html(); ?></p>
 
@@ -47,9 +47,9 @@ global $product;
 			<input type="hidden" name="variation_id" class="variation_id" value="0" />
 		</div>
 	</div>
-	<div class="col-md-5 note-product-wrapper">
+	<!-- <div class="col-md-5 note-product-wrapper">
 		<div class="note-product">
 			Need a custom service? worry not, kindly fill in the form <a href="/contact-us" target="_blank">HERE</a>. We will get in touch with you shortly.
 		</div>
-	</div>
+	</div> -->
 </div>

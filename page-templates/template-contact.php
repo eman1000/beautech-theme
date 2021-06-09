@@ -97,7 +97,7 @@ $content_text_right_bottom = get_field('content_text_right_bottom');
                   <h2><?php echo $title_right_top;?></h2>
                 <?php endif;?>
                 <?php if($content_text_right_top):?>
-                  <p><?php echo $content_text_right_top;?></p>
+                  <p><a href="tel:<?php echo $content_text_right_top;?>"><?php echo $content_text_right_top;?></a></p>
                 <?php endif;?>
                 <div class="arrow-wrapper">
                   <img class="img-icon" src="<?php echo get_template_directory_uri(); ?>/img/icon/long-arrow-right.svg" alt="arrow" />

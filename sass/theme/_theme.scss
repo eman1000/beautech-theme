@@ -229,6 +229,9 @@ select, input{
    .buttons-holder{
      display: flex;
      flex-direction: row;
+     @media(max-width:$md){
+      flex-direction: column;
+     }
      .btn{
        margin-right: 19px;
        &:last-child{
@@ -1518,7 +1521,7 @@ select {
         max-width: 288px;
         text-align: left;
       }
-      p{
+      p,a{
         font-weight: 500;
         font-size: 13px;
         color: #FFFFFF;
@@ -1696,4 +1699,45 @@ display: none;
   text-align: center;
   color: #495057;
   display: none;
+}
+
+.btn-link{
+  color: $secondary;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  p{
+    margin: 0;
+  }
+  img{
+    margin-left: 5px;
+    width: 26px;
+    height: 16px;
+  }
+  &:hover{
+    color: $secondary;
+  }
+}
+
+.social-holder{
+  margin-top: 47px;
+  display: flex;
+  flex-direction: row;
+  .social-text{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height, or 119% */
+
+    letter-spacing: 1px;
+
+    color: $secondary
+  }
+  .social-icon{
+    max-width: 22px;
+    width: 100%;
+    margin-left: 20px;
+  }
+
 }

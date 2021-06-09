@@ -52,6 +52,7 @@ if( function_exists('acf_add_options_page') ) {
 		'redirect'		=> false
 	));	
 }
+WC_Cache_Helper::get_transient_version( 'product', true );
 
 add_action('woocommerce_before_add_to_cart_form', 'selected_variation_price_replace_variable_price_range');
 function selected_variation_price_replace_variable_price_range(){

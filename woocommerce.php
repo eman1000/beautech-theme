@@ -59,7 +59,7 @@ $current_id = $post->ID;
 
 
 <!-- Top Banner -->
-<div class="page-banner banner-<?php echo $style; ?>" style="background-image: url('<?php echo $hero_background_picture; ?>');">
+<div  data-aos="fade-in" class="page-banner banner-<?php echo $style; ?>" style="background-image: url('<?php echo $hero_background_picture; ?>');">
   <div class="container">
     <?php if($title):?>
     <h1><?php echo $title;?></h1>
@@ -154,7 +154,7 @@ $current_id = $post->ID;
           }
         } ?> -->
 
-        <h1 class="entry-title  break-text">Available Products</h1>
+        <h1 class="entry-title  break-text"   data-aos="fade-up">Available Products</h1>
       </div>
       <div class="col-md-6">
         <ul class="category-products">
@@ -167,7 +167,7 @@ $current_id = $post->ID;
                   $active = '';
               }
           ?>
-                  <li <?php echo $active; ?>>
+                  <li <?php echo $active; ?>   data-aos="fade-up">
                       <a href="<?php the_permalink(); ?>">
                           <?php the_title(); ?>
                       </a>
@@ -186,7 +186,7 @@ $current_id = $post->ID;
 
 <!-- Main -->
 
-<div class="page-pannel">
+<div class="page-pannel" data-aos="fade-in">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
