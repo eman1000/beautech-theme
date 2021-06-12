@@ -23,6 +23,15 @@ $attribute_keys  = array_keys( $attributes );
 $variations_json = wp_json_encode( $available_variations );
 $variations_attr = function_exists( 'wc_esc_json' ) ? wc_esc_json( $variations_json ) : _wp_specialchars( $variations_json, ENT_QUOTES, 'UTF-8', true );
 
+$certificate_icon = get_field('certificate_icon');
+$certificate_icon_picture = $certificate_icon['sizes']['large'];
+
+$item_description = get_field('item_description');
+
+$download_text = get_field('download_text');
+$file_to_download = get_field('file_to_download');
+
+
 do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
 <form class="variations_form cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data' data-product_id="<?php echo absint( $product->get_id() ); ?>" data-product_variations="<?php echo $variations_attr; // WPCS: XSS ok. ?>">
@@ -32,14 +41,14 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 		<p class="stock out-of-stock"><?php echo esc_html( apply_filters( 'woocommerce_out_of_stock_message', __( 'This product is currently out of stock and unavailable.', 'woocommerce' ) ) ); ?></p>
 	<?php else : ?>
 		<div class="variations row" cellspacing="0">
-			<div class="col-md-12">
+			<div class="col-md-7">
 				<div class="row">
 						<?php foreach ( $attributes as $attribute_name => $options ) : ?>
 							
-							<div class="col-md-3 v-label-holder">
+							<div class="col-md-5 v-label-holder">
 								<label for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>"><?php echo wc_attribute_label( $attribute_name ); // WPCS: XSS ok. ?>:</label>
 							</div>
-							<div class="col-md-4 v-label-holder">
+							<div class="col-md-7 v-label-holder">
 								<?php
 									wc_dropdown_variation_attribute_options(
 										array(
@@ -51,10 +60,29 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 									echo end( $attribute_keys ) === $attribute_name ? wp_kses_post( apply_filters( 'woocommerce_reset_variations_link', '<a class="reset_variations" href="#">' . esc_html__( 'Clear', 'woocommerce' ) . '</a>' ) ) : '';
 								?>
 							</div>
-							<div class="col-md-5">
-							</div>
+							<!-- <div class="col-md-5">
+							</div> -->
 						
 						<?php endforeach; ?>
+				</div>
+			</div>
+			<div class="col-md-5 note-holder">
+				<div class="note-product-wrapper">
+					<div class="note-product with-cert">
+						<?php if($item_description):?>
+							<span><?php echo $item_description;?></span>
+						<?php endif;?>
+						<?php if($file_to_download):?>
+							<a class="download-btn" href="<?php echo $file_to_download;?>">
+								<span>
+									<img class="img-icon" src="<?php echo $certificate_icon_picture; ?>" alt="cert" />
+								</span>
+								<span>
+									<?php echo $download_text;?>
+								</span>
+							</a>
+						<?php endif;?>
+					</div>
 				</div>
 			</div>
 		</div>

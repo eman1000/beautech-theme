@@ -485,6 +485,7 @@ select, input{
      width: 42px;
      height: 42px;
      margin: 15px;
+     cursor: pointer;
    }
 }
 
@@ -494,6 +495,7 @@ select, input{
   position: absolute;
   width: 15px;
   height: 15px;
+  cursor: pointer;
   @media(max-width:$md){
     // margin-right: 15px;
     // position: absolute;
@@ -1025,14 +1027,21 @@ select {
 }
 
 .woocommerce div.product form.cart .reset_variations {
-  display: none !important;
+  font-weight: 600;
+  display: block;
+  align-self: flex-start;
+  margin-bottom: 5px;
+  text-decoration: underline;
 }
 
 #pa_colour{
   display: block !important;
   background: none;
   border: none;
-  text-align-last: center;
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 
 .woo-variation-items-wrapper{
@@ -1047,7 +1056,39 @@ select {
   justify-content: center;
   align-items: flex-end;
 }
+
+.with-cert{
+  @media(min-width:$md){
+    margin-left: 15px;
+  }
+}
 .note-product{
+  strong{
+    color: $secondary;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 22px;
+    /* identical to box height, or 183% */
+
+    letter-spacing: 0.7px;
+  }
+
+  .download-btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 113px;
+    span{
+      font-size: 9px;
+      line-height: 22px;
+      /* identical to box height, or 244% */
+      font-weight: normal;
+      letter-spacing: 0.7px;
+
+      color: #000000;
+    }
+  }
   @media(max-width:$md){
     margin-top: 15px;
   }
@@ -1411,7 +1452,9 @@ select {
 }
 
 .reset_variations{
-  display: none;
+  //display: none;
+  position: absolute;
+  top: -15px;
 }
 
 #homeModal{
@@ -1740,4 +1783,10 @@ display: none;
     margin-left: 20px;
   }
 
+}
+
+.note-holder{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
